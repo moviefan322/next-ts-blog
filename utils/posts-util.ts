@@ -17,7 +17,7 @@ function getPostData(fileName: string) {
     image: data.image,
     excerpt: data.excerpt,
     isFeatured: data.isFeatured,
-    date: data.date.toISOString(),
+    date: data.date,
     content,
   };
 

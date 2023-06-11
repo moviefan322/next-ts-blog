@@ -2,7 +2,7 @@
 title: Getting Started with Next.js
 excerpt: A quick guide to getting started with Next.js
 date: "2023-06-11"
-image: .png
+image: getting-started-nextjs.png
 isFeatured: true
 ---
 
