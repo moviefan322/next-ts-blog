@@ -11,7 +11,8 @@ function Hero() {
           src="/images/site/topcat.png"
           alt="an image of Phil"
           width={300}
-          height={326}
+          height={300}
+          priority
         />
       </div>
       <h1>Hi, I'm Phil</h1>
