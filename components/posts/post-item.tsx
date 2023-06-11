@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./post-item.module.css";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Post } from "../../types/types";
 
 type PostItemProps = {
@@ -16,13 +16,21 @@ function PostItem({ post }: PostItemProps) {
     year: "numeric",
   });
 
-  const imagePath = `/images/posts/${slug}/${image}`;
+  const imagePath = `/images/posts/${image}`;
+  const linkPath = `/posts/${slug}`;
+
   return (
     <li className={classes.post}>
-      <Link href={`/posts/${slug}`}>
+      <Link href={linkPath}>
         <div className={classes.image}>
           {" "}
-          <Image src={imagePath} alt={title} width={300} height={200} />
+          <Image
+            src={imagePath}
+            alt={title}
+            width={300}
+            height={200}
+            layout="responsive"
+          />
         </div>
         <div className={classes.content}>
           <h3>{title}</h3>

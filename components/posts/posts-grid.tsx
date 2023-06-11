@@ -11,9 +11,7 @@ function PostsGrid({ posts }: PostsGridProps) {
   return (
     <ul className={classes.grid}>
       {posts.map((post) => (
-        <li key={post.slug}>
-          <PostItem post={post} />
-        </li>
+        <PostItem key={post.slug} post={post} />
       ))}
     </ul>
   );
