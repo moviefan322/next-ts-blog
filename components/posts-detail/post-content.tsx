@@ -4,6 +4,8 @@ import { Post } from "../../types/types";
 import classes from "./post-content.module.css";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 interface PostContentProps {
   post: Post;
@@ -35,7 +37,7 @@ function PostContent({ post }: PostContentProps) {
         return (
           <div className={classes.image}>
             <Image
-              src={`/images/posts/${slug}/${image.properties.src}`}
+              src={`/images/posts/${image.properties.src}`}
               alt={image.properties.alt}
               height={300}
               width={600}
@@ -45,6 +47,15 @@ function PostContent({ post }: PostContentProps) {
       }
 
       return <p>{paragraph.children}</p>;
+    },
+    code(code: any) {
+      const { className, children } = code;
+      const language = className.split("-")[1]; // className is something like language-js => we need the "js" part here
+      return (
+        <SyntaxHighlighter language={language} style={atomDark}>
+          {children}
+        </SyntaxHighlighter>
+      );
     },
   };
   return (
