@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Image from "next/image";
 import classes from "./hero.module.css";
@@ -13,7 +14,7 @@ function Hero() {
           height={326}
         />
       </div>
-      <h1>Hi, I&#39m Phil</h1>
+      <h1>Hi, I'm Phil</h1>
       <p>
         I blog about web development - especially frontend frameworks like React
       </p>

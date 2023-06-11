@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import Layout from "@/components/layout/layout";
 
 type AppProps = {
   Component: React.FC;
@@ -6,5 +7,9 @@ type AppProps = {
 };
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
