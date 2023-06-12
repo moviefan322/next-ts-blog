@@ -1,6 +1,5 @@
 import React from "react";
 import MainNavigation from "./main-navigation";
-import { type } from "os";
 
 type Props = {
   children: React.ReactNode;

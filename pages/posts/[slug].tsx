@@ -35,6 +35,7 @@ export function getStaticProps(context: any) {
 
 export function getStaticPaths() {
   const postFilenames = getPostsFiles();
+  console.log(postFilenames);
   const slugs = postFilenames.map((fileName) => fileName.replace(/\.md$/, ""));
 
   return {

@@ -1,5 +1,5 @@
 import React from "react";
-import AllPosts from "./all-posts";
+import AllPosts from "../../components/posts/all-posts";
 import { Post } from "@/types/types";
 import { getAllPosts } from "@/utils/posts-util";
 import Head from "next/head";

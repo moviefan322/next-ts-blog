@@ -6,7 +6,7 @@ export type Post = {
   excerpt: string;
   slug: string;
   date: string;
-  content: string;
+  content: string | any;
   isFeatured: boolean;
 };
 

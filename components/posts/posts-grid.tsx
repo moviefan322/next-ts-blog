@@ -8,6 +8,7 @@ type PostsGridProps = {
 };
 
 function PostsGrid({ posts }: PostsGridProps) {
+  console.log(posts);
   return (
     <ul className={classes.grid}>
       {posts.map((post) => (
