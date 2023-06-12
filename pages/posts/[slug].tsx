@@ -2,6 +2,7 @@ import React from "react";
 import PostContent from "@/components/posts-detail/post-content";
 import { getPostData, getPostsFiles } from "@/utils/posts-util";
 import { Post } from "@/types/types";
+import Head from "next/head";
 
 interface PostDetailPageProps {
   post: Post;
@@ -10,6 +11,10 @@ interface PostDetailPageProps {
 function PostDetailPage({ post }: PostDetailPageProps): JSX.Element {
   return (
     <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.excerpt} />
+      </Head>
       <PostContent post={post} />
     </>
   );

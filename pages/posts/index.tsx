@@ -2,13 +2,25 @@ import React from "react";
 import AllPosts from "./all-posts";
 import { Post } from "@/types/types";
 import { getAllPosts } from "@/utils/posts-util";
+import Head from "next/head";
 
 interface AllPostsPageProps {
   posts: Post[];
 }
 
 function AllPostsPage({ posts }: AllPostsPageProps): JSX.Element {
-  return <AllPosts posts={posts} />;
+  return (
+    <>
+      <Head>
+        <title>All Posts</title>
+        <meta
+          name="description"
+          content="A list of all programming-related tutorials and posts!"
+        />
+      </Head>
+      <AllPosts posts={posts} />
+    </>
+  );
 }
 
 export function getStaticProps(): {
