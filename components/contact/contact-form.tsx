@@ -8,11 +8,29 @@ function ContactForm() {
 
   async function sendMessageHandler(event: React.FormEvent) {
     event.preventDefault();
-    // optional: add validation
 
     const enteredEmail = emailInputRef.current!.value;
     const enteredName = nameInputRef.current!.value;
     const enteredMessage = messageInputRef.current!.value;
+
+    if (
+      enteredEmail.trim() === "" ||
+      enteredName.trim() === "" ||
+      enteredMessage.trim() === ""
+    ) {
+      // throw an error
+      throw new Error("Invalid input");
+    }
+
+    if (enteredMessage.trim().length < 5) {
+      // throw an error
+      throw new Error("Message too short");
+    }
+
+    if (!enteredEmail.match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/)) {
+      // throw an error
+      throw new Error("Invalid Email");
+    }
 
     // fetch API
     const res = await fetch("/api/contact", {
@@ -28,6 +46,11 @@ function ContactForm() {
     });
     const data = await res.json();
     console.log(data);
+
+    // clear the form
+    emailInputRef.current!.value = "";
+    nameInputRef.current!.value = "";
+    messageInputRef.current!.value = "";
   }
   return (
     <section className={classes.contact}>

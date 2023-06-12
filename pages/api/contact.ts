@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { MongoClient } from "mongodb";
+import { Message } from "../../types/types";
 
-function handler(req: NextApiRequest, res: NextApiResponse) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     const { email, name, message } = req.body;
     if (
@@ -15,15 +17,38 @@ function handler(req: NextApiRequest, res: NextApiResponse) {
       return;
     }
     // Store it in a database
-    const newMessage = {
+    const newMessage: Message = {
       email,
       name,
       message,
     };
-    console.log(newMessage);
-    res
-      .status(201)
-      .json({ message: "Successfully stored message!", outgoingMessage: newMessage });
+
+    let client: MongoClient;
+    try {
+      client = await MongoClient.connect(process.env.MONGO_URI);
+    } catch (error) {
+      res.status(500).json({ message: "Could not connect to database." });
+      return;
+    }
+
+    const db = client.db();
+
+    try {
+      const result = await db.collection("messages").insertOne(newMessage);
+      newMessage._id = result.insertedId;
+      console.log(result);
+    } catch (error) {
+      client.close();
+      res.status(500).json({ message: "Storing message failed!" });
+      return;
+    }
+
+    client.close();
+
+    res.status(201).json({
+      message: "Successfully stored message!",
+      outgoingMessage: newMessage,
+    });
   }
 }
 
