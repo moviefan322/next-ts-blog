@@ -19,7 +19,7 @@ interface PostContentProps {
 function PostContent({ post }: PostContentProps) {
   const { title, image, content, slug } = post;
 
-  const imagePath = `/images/posts/${image}`;
+  const imagePath = `/images/posts/${slug}/${image}`;
 
   const customRenderers = {
     // img(image: any) {
