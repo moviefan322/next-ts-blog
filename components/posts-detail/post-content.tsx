@@ -22,17 +22,6 @@ function PostContent({ post }: PostContentProps) {
   const imagePath = `/images/posts/${slug}/${image}`;
 
   const customRenderers = {
-    // img(image: any) {
-    //   return (
-    //     <Image
-    //       src={`/images/posts/${slug}/${image.src}`}
-    //       alt={image.alt}
-    //       height={300}
-    //       width={600}
-    //     />
-    //   );
-    // },
-
     p(paragraph: any) {
       const { node } = paragraph;
 
@@ -60,6 +49,14 @@ function PostContent({ post }: PostContentProps) {
         <SyntaxHighlighter language={language} style={atomDark}>
           {children}
         </SyntaxHighlighter>
+      );
+    },
+    // do not render a tags or contents of
+    a(link: any) {
+      return (
+        <a href={link.href} target="_blank" rel="noopener noreferrer">
+          {link.children}
+        </a>
       );
     },
   };
