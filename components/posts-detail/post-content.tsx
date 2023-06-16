@@ -53,11 +53,7 @@ function PostContent({ post }: PostContentProps) {
     },
     // do not render a tags or contents of
     a(link: any) {
-      return (
-        <a href={link.href} target="_blank" rel="noopener noreferrer">
-          {link.children}
-        </a>
-      );
+      return " ";
     },
   };
 
