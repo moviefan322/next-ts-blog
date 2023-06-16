@@ -6,7 +6,7 @@ isFeatured: false
 date: "2023-6-16"
 ---
 
-
+- [Introduction ](#introduction-)
 - [Setting up the project ](#setting-up-the-project-)
 - [Connecting TypeOrm \& Sqlite ](#connecting-typeorm--sqlite-)
 - [Creating entities ](#creating-entities-)
@@ -22,6 +22,14 @@ date: "2023-6-16"
 - [Authentication ](#authentication-)
 - [Cookies ](#cookies-)
 - [Guards ](#guards-)
+
+## Introduction <a id="introduction-"></a>
+
+My latest attempt at technological acquisition is to learn Nest.js- Nest is a framework for building efficient, scalable Node.js server-side applications. I wanted to start using it because it takes advantage of TypeScript, which I have been using for a while now and I really like. However, as I started to get into it, my impression is that you need to sort through a nest of various boilerplate tasks to get things started. Don't let this be a deterrent though, my impression is that once configured, Nest can be used to build some very robust applications. I particularly like the use of built-in decorators to handle a wide variety of tasks that would otherwise require a lot of boilerplate code.
+
+The following is a summary of my notes as I go from scratch to building up a simple user module in Nest.js. I will be using TypeOrm to connect to a Sqlite database, and I will be using the built-in decorators to handle validation, authentication, and authorization.
+
+This is a sensible first step for any application, and by going through this process we can start to get an idea of how Nest.js works.
 
 ## Setting up the project <a id="setting-up-the-project-"></a>
 
