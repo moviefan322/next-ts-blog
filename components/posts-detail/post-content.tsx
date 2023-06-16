@@ -2,7 +2,7 @@ import React from "react";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
 import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
-import css from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
+import ts from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
 import PostHeader from "./post-header";
 import { Post } from "../../types/types";
 import classes from "./post-content.module.css";
@@ -10,7 +10,7 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 
 SyntaxHighlighter.registerLanguage("js", js);
-SyntaxHighlighter.registerLanguage("css", css);
+SyntaxHighlighter.registerLanguage("ts", ts);
 
 interface PostContentProps {
   post: Post;
@@ -51,9 +51,16 @@ function PostContent({ post }: PostContentProps) {
         </SyntaxHighlighter>
       );
     },
-    // do not render a tags or contents of
-    a(link: any) {
-      return " ";
+    h2(h2: any) {
+      const { node } = h2;
+      const firstChild = node.children[0];
+      const id = node.children[1].value.split('"')[1];
+
+      const splitText = firstChild.value.split(" ");
+
+      const joinedText = splitText.join(" ");
+
+      return <h2 id={id}>{joinedText}</h2>;
     },
   };
 

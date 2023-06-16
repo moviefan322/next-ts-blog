@@ -6,24 +6,22 @@ isFeatured: false
 date: "2023-6-16"
 ---
 
-# Table of contents
 
-- [Table of contents](#table-of-contents)
-  - [Setting up the project ](#setting-up-the-project-)
-  - [Connecting TypeOrm \& Sqlite ](#connecting-typeorm--sqlite-)
-  - [Creating entities ](#creating-entities-)
-  - [Creating Repositories ](#creating-repositories-)
-  - [Simple Validation ](#simple-validation-)
-  - [DTOs ](#dtos-)
-  - [Routes ](#routes-)
-  - [Connecting Service to Controller ](#connecting-service-to-controller-)
-  - [Entity hooks ](#entity-hooks-)
-  - [More Services ](#more-services-)
-  - [More controllers ](#more-controllers-)
-  - [Interceptors ](#interceptors-)
-  - [Authentication ](#authentication-)
-  - [Cookies ](#cookies-)
-  - [Guards ](#guards-)
+- [Setting up the project ](#setting-up-the-project-)
+- [Connecting TypeOrm \& Sqlite ](#connecting-typeorm--sqlite-)
+- [Creating entities ](#creating-entities-)
+- [Creating Repositories ](#creating-repositories-)
+- [Simple Validation ](#simple-validation-)
+- [DTOs ](#dtos-)
+- [Routes ](#routes-)
+- [Connecting Service to Controller ](#connecting-service-to-controller-)
+- [Entity hooks ](#entity-hooks-)
+- [More Services ](#more-services-)
+- [More controllers ](#more-controllers-)
+- [Interceptors ](#interceptors-)
+- [Authentication ](#authentication-)
+- [Cookies ](#cookies-)
+- [Guards ](#guards-)
 
 ## Setting up the project <a id="setting-up-the-project-"></a>
 
