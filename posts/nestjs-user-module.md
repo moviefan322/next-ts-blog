@@ -3,7 +3,7 @@ title: Setting Up Modules in Nest.js
 excerpt: NestJS has a modular architecture. Learn how to set up modules in NestJS.
 image: nestjs-user-module.png
 isFeatured: true
-date: "2023-6-16"
+date: "2023-06-16"
 ---
 
 - [Introduction ](#introduction-)

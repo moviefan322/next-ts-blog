@@ -3,7 +3,7 @@ title: Properly Managing Auth State With Redux
 excerpt: Redux is a powerful state management tool, but it requires a few considerations. In this post, we'll look at how to properly manage auth state with Redux.
 image: redux-proper-auth-state-management.png
 isFeatured: true
-date: "2023-7-02"
+date: "2023-07-02"
 ---
 
 - [Introduction ](#introduction-)
