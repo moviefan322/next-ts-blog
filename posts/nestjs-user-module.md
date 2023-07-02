@@ -33,10 +33,13 @@ This is a sensible first step for any application, and by going through this pro
 
 ## Setting up the project <a id="setting-up-the-project-"></a>
 
-CLI:
--nest g module xxx
--nest g controller xxx
--nest g service xxx
+-terminal-
+
+```bash
+nest g module xxx
+nest g controller xxx
+nest g service xxx
+```
 
 ## Connecting TypeOrm & Sqlite <a id="connecting-typeorm--sqlite-"></a>
 

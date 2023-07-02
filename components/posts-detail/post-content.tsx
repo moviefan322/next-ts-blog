@@ -3,6 +3,7 @@ import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
 import js from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
 import ts from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
+import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
 import PostHeader from "./post-header";
 import { Post } from "../../types/types";
 import classes from "./post-content.module.css";
@@ -11,6 +12,7 @@ import Image from "next/image";
 
 SyntaxHighlighter.registerLanguage("js", js);
 SyntaxHighlighter.registerLanguage("ts", ts);
+SyntaxHighlighter.registerLanguage("ts", bash);
 
 interface PostContentProps {
   post: Post;
