@@ -16,9 +16,7 @@ function Hero() {
         />
       </div>
       <h1>Hi, I'm Phil</h1>
-      <p>
-        I blog about web development - especially frontend frameworks like React
-      </p>
+      <p>I blog about my journey in web development.</p>
     </section>
   );
 }

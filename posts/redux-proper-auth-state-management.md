@@ -19,7 +19,7 @@ date: "2023-7-02"
 
 So, I've been using Redux here and there for my projects for a while, but it didn't occur to me until now that I wasn't using it properly. A more senior dev friend of mine kept telling me that ALL state needs to be managed from Redux, that's where all the API calls should be coming from, and that's where all the state should be stored. I didn't really understand why, and I ignored the advice until I ran into some big problems. See my NestJS post for context on the problem I kept running into- none of my protected routes were fetching data. I was getting a 401 error, and I couldn't figure out why. I tried a half dozen different auth methods but kept running into the same error. When I showed it to my friend he identified the problem immediately, I was trying to fetch the protected data before the component was mounted, so the auth token wasn't being sent with the request. I was trying to fetch the data in the component, not in Redux. I finally decided to tear it all down and try to build it up correctly, and here are the steps I took to do that.
 
-## What I Had Before <a id="what-i-had-before"></a>
+## What I Had Before <a id="what-i-had-before-"></a>
 
 This was my original userSlice:
 
@@ -142,7 +142,7 @@ export default userSlice.reducer;
 
 The above is a bit of a mess becuase it includes the method that did not work as well as my workaround- yes I reverted to numerous workarounds to make the app work. I was able to get the app work, but I lost a lot of server-side functionality in the process. I wasn't able to have protected routes, and I wasn't able to link entities in the database- of course there were workarounds, I was storing the userData in localStorage and submitting the userId by hand and using that as a reference, but I lost a lot of the advantages offered by PostGres and NestJS with regard to linking entities and having data serialized and linked in a tidy and convenient way. Of course this also amounted to more legwork, taking extra steps on both ends to make sure the data was being sent and recieved properly without any shortcuts or security.
 
-## CreateSlice From Scratch <a id="createslice-from-scratch"></a>
+## CreateSlice From Scratch <a id="createslice-from-scratch-"></a>
 
 I decided to create a new authSlice from scratch that more or less conformed to the state that I was using before. Not much to explain here, it's a naked slice to which I will be adding the reducers and extraReducers as I go along.
 
@@ -257,7 +257,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 Note that most people do it at the Index, but for whatever reason I decided to go straight to the top.
 
-## Registering a User <a id="registering-a-user"></a>
+## Registering a User <a id="registering-a-user-"></a>
 
 Here I went ahead and added reducers for the async action:
 
@@ -353,7 +353,7 @@ const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
 This is already much tidier than making the request from the component. I tested the route, and it worked like a charm.
 
-## Logging in a User <a id="logging-in-a-user"></a>
+## Logging in a User <a id="logging-in-a-user-"></a>
 
 This is very much the same deal. First, the async action:
 
@@ -512,7 +512,7 @@ const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
 At this point, everything was working perfectly but I got lost in rabbit hole trying to get a token dispatched upon registration, but then I realized that it was unneccesary because I could just login the user manually after the registration without getting the server dependencies angry.
 
-## AuthApi <a id="authapi"></a>
+## AuthApi <a id="authapi-"></a>
 
 This was the bit of the puzzle I'd really been missing. I was still just making plain requests with user credentials, I still hadn't broke any new ground, thus far I had just moved the API requests from the component to the store. But THIS step is what I had never gotten around to, and it's the crucial one- creating a middleware that will automatically add the token to the request headers. I was trying to do this before, but the token kept getting attached as undefined because the action was executing before the component had fully mounted.
 
@@ -696,7 +696,7 @@ function Navbar(): JSX.Element {
 
 And boom! This got it set up. However, I noticed that when new data was sent to the database the state wasn't rendering immediately, so I made a few changes to get the state to react immediately.
 
-## Instant State Update on DB Change <a name="instant-state-update"></a>
+## Instant State Update on DB Change <a name="instant-state-update-"></a>
 
 First, I added a new value in the authState, 'isNewData', which is set to false by default:
 
@@ -846,7 +846,7 @@ const logoutButtonHandler = (e: React.MouseEvent<HTMLAnchorElement>) => {
 
 And that was it! The state now updates immediately when new data is sent to the database. I'm sure there is a better way to do this, but this is what I came up with and it works well.
 
-## Conclusion <a name="conclusion"></a>
+## Conclusion <a name="conclusion-"></a>
 
 That concludes my first correct implementation of Redux auth, and it was like a lightbulbs flashing in my head all over the place. My dev friend was laughing, saying everyone goes through this, but in the end you need to do everything from Redux, once you are managing the store from your components it's a mess.
 
